@@ -7,7 +7,7 @@ sevices:
 
 before_install:
   - echo "간다잇"
-  - docker build -t kshcloud/react:v4 -f Dockerfile.dev
+  - docker build -t kshcloud/react:v4 -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true kshcloud/react:v4 npm run test --
