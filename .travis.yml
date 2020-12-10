@@ -12,6 +12,19 @@ before_install:
 script:
   - docker run -e CI=true kshcloud/react:v4 npm run test -- --coverage
 
+deploy:
+  provider: elasticbeanstalk
+  region : "ap-northeast-2"
+  app : "docker-react-app";
+  env : "DockerReactApp-env"
+  bucket_name : "elasticbeanstalk-ap-northeast-2-118767560464"
+  bucket_path : "docker-react-app"
+  on:
+    branch: master
+
+access_key_id : $AWS_ACCESS_KEY
+secret_access_key : $AWS_SECRET_ACCESS_KEY
+
 
 after success: 
   - echo "집에 가자잇"
